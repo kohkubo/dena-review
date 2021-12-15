@@ -7,7 +7,7 @@ const DISC_RADIUS = 40.0;
 const INIT_DISC_RADIUS = 25.0;
 
 function randomRange(min, max) {
-    return min + (max - min) * baseRandom();
+    return min + (max - min) * Math.random();
 }
 
 function baseRandom() {
@@ -40,11 +40,8 @@ export class Disc {
         if (Math.random() < 0.08) {
             this.movingEye();
         }
-        if (Math.random() < 0.1) {
-            this.movingBody();
-        }
         if (this.r < this.defR) {
-            this.r += 5;
+            this.r += 5.0;
         }
         let eyeA = 0.1;
         this.eyeX0 = (1.0 - eyeA) * this.eyeX0 + eyeA * (this.tgtEyeX0 - this.eyeX0);
@@ -67,7 +64,7 @@ export class Disc {
         ey += this.eyeY1 * this.r * 1.25;
         if (this.color === "blue") {
             drawDisc(ctx, ex, ey, this.r * 0.24, "#0068b7");
-            drawDisc(ctx, ex - 2, ey - 2, this.r * 0.09, "white");
+            drawDisc(ctx, ex - 2.0, ey - 2.0, this.r * 0.09, "white");
         } else {
             drawDisc(ctx, ex, ey, this.r * 0.24, "#0063ad");
         }
@@ -80,11 +77,6 @@ export class Disc {
             this.tgtEyeX0 = this.tgtEyeX1 * 0.2;
             this.tgtEyeY0 = this.tgtEyeY1 * 0.2;
         }
-    }
-
-    movingBody() {
-        this.x += baseRandom() * 0.5;
-        this.y += baseRandom() * 0.5;
     }
 }
 

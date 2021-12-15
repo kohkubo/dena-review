@@ -76,7 +76,9 @@ resetBtn.addEventListener('click', function () {
 });
 
 function loop(ts) {
-    topDiscAnimation(mainCanvasCtx, canvas, g_mousePos.x, g_playerColor);
+    if (g_endflg === false) {
+        topDiscAnimation(mainCanvasCtx, canvas, g_mousePos.x, g_playerColor);
+    }
     for (let i = 0; i < 7; i++) {
         for (let j = 0; j < 6; j++) {
             if (g_gameBoard[i][j] !== undefined) {
@@ -84,15 +86,16 @@ function loop(ts) {
             }
         }
     }
-    if (g_endflg == true) {
+    if (g_endflg === true) {
         for (let i = 0; i < 7; i++) {
             for (let j = 0; j < 6; j++) {
                 if (g_gameBoard[i][j] !== undefined) {
                     if (g_gameBoard[i][j].color !== g_win) {
-                        g_gameBoard[i][j].r = 10;
+                        g_gameBoard[i][j].r = 0.0;
                         g_gameBoard[i][j].eyeOpen = false;
                     } else {
-                        g_gameBoard[i][j].r = 60;
+                        g_gameBoard[i][j].r = 60.0;
+                        g_gameBoard[i][j].eyeOpen = true;
                     }
 
                 }
