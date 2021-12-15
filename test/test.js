@@ -1,10 +1,10 @@
 import {
     isGameSet,
-} from './modules/game.js';
+} from '../public/scripts/modules/game.js';
 
 import {
     Disc,
-} from './modules/disc.js';
+} from '../public/scripts/modules/disc.js';
 
 let boardTestCase = [];
 
@@ -96,7 +96,6 @@ function testIsGameSet() {
     console.log("test case no set diagonal1: " + isGameSet(boardTestCase, 1, 2));
     console.log("test case no set diagonal2: " + isGameSet(boardTestCase, 2, 1));
     initTestCase();
-
 }
 
 testIsGameSet();
