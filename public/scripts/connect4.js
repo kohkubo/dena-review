@@ -75,10 +75,10 @@ resetBtn.addEventListener('click', function () {
     location.reload();
 });
 
+let textY = canvas.height + 100;
+
 function loop(ts) {
-    if (g_endflg === false) {
-        topDiscAnimation(mainCanvasCtx, canvas, g_mousePos.x, g_playerColor);
-    }
+    topDiscAnimation(mainCanvasCtx, canvas, g_mousePos.x, g_playerColor, g_endflg);
     for (let i = 0; i < 7; i++) {
         for (let j = 0; j < 6; j++) {
             if (g_gameBoard[i][j] !== undefined) {
@@ -91,13 +91,26 @@ function loop(ts) {
             for (let j = 0; j < 6; j++) {
                 if (g_gameBoard[i][j] !== undefined) {
                     if (g_gameBoard[i][j].color !== g_win) {
-                        g_gameBoard[i][j].r = 0.0;
+                        g_gameBoard[i][j].r = 10.0;
                         g_gameBoard[i][j].eyeOpen = false;
                     } else {
                         g_gameBoard[i][j].r = 60.0;
                         g_gameBoard[i][j].eyeOpen = true;
+                        g_gameBoard[i][j].y += Math.random() * -1.5;
+                        mainCanvasCtx.beginPath();
+                        mainCanvasCtx.font = "bold 100px Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif";
+                        mainCanvasCtx.textAlign = "center";
+                        mainCanvasCtx.fillStyle = g_win;
+                        let text = g_win === 'red' ? 'Red' : 'Blue';
+                        text = text + ' Win!';
+                        mainCanvasCtx.fillText(text, canvas.width / 2, textY);
+                        mainCanvasCtx.lineWidth = 2;
+                        mainCanvasCtx.strokeStyle = "white";
+                        mainCanvasCtx.strokeText(text, canvas.width / 2, textY);
+                        if (textY > canvas.height / 2 + 50) {
+                            textY += Math.random() * -0.1;
+                        }
                     }
-
                 }
             }
         }

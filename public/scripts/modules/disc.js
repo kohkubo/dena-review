@@ -28,8 +28,8 @@ export class Disc {
         this.eyeY0 = 0.0;
         this.eyeX1 = 0.0;
         this.eyeY1 = 0.0;
-        this.tgtEyeX0 = 0.7 * baseRandom();
-        this.tgtEyeY0 = 0.7 * baseRandom();
+        this.tgtEyeX0 = 0.6 * baseRandom();
+        this.tgtEyeY0 = 0.6 * baseRandom();
         this.tgtEyeX1 = 0.0;
         this.tgtEyeY1 = 0.0;
     }
@@ -37,7 +37,7 @@ export class Disc {
     reqularMove(ctx) {
         this.drawDiscObj(ctx);
         this.drawEye(ctx);
-        if (Math.random() < 0.08) {
+        if (Math.random() < 0.01) {
             this.movingEye();
         }
         if (this.r < this.defR) {
@@ -51,6 +51,7 @@ export class Disc {
     }
 
     drawDiscObj(ctx) {
+        drawDisc(ctx, this.defX, this.defY, 10, this.color);
         drawDisc(ctx, this.x, this.y, this.r, this.color);
     }
 
@@ -62,21 +63,17 @@ export class Disc {
         drawDisc(ctx, ex, ey, this.r * 0.5, "white");
         ex += this.eyeX1 * this.r * 1.25;
         ey += this.eyeY1 * this.r * 1.25;
-        if (this.color === "blue") {
-            drawDisc(ctx, ex, ey, this.r * 0.24, "#0068b7");
-            drawDisc(ctx, ex - 2.0, ey - 2.0, this.r * 0.09, "white");
-        } else {
-            drawDisc(ctx, ex, ey, this.r * 0.24, "#0063ad");
-        }
+        drawDisc(ctx, ex, ey, this.r * 0.3, "#333333");
+        drawDisc(ctx, ex - 3.0, ey - 3.0, this.r * 0.1, "white");
     }
 
     movingEye() {
-        this.tgtEyeX1 = 0.7 * baseRandom();
-        this.tgtEyeY1 = 0.7 * baseRandom();
-        if (Math.random() < 0.3) {
+        this.tgtEyeX1 = 0.6 * baseRandom();
+        this.tgtEyeY1 = 0.6 * baseRandom();
+        // if (Math.random() < 0.3) {
             this.tgtEyeX0 = this.tgtEyeX1 * 0.2;
             this.tgtEyeY0 = this.tgtEyeY1 * 0.2;
-        }
+        // }
     }
 }
 
@@ -86,7 +83,7 @@ export class DiscPieces {
         this.y = y;
         this.color = color;
         this.vx = 30.0 * baseRandom();
-        this.vy = 30.0 * baseRandom();
+        this.vy = 30.0 * randomRange(-0.3, 0.7);
         this.r = 30.0;
     }
 

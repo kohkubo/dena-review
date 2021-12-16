@@ -28,10 +28,12 @@ function drawPositionGuide(ctx) {
     }
 }
 
-export function topDiscAnimation(ctx, canvas, xPos, color) {
+export function topDiscAnimation(ctx, canvas, xPos, color, endFlg) {
     const PADDING = 15;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPositionGuide(ctx);
-    let x = Math.min(parseInt(xPos / 100), 6);
-    drawDisc(ctx, x * 100 + 50 + PADDING, 50, 35, color);
+    if (endFlg === false) {
+        let x = Math.min(parseInt(xPos / 100), 6);
+        drawDisc(ctx, x * 100 + 50 + PADDING, 50, 35, color);
+    }
 }
