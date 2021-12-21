@@ -30,5 +30,5 @@ demo: https://connect4-48dff.web.app/
 
 ## Reference sites
 
-[EmilianoCarrillo/Connect4_Canvas](https://github.com/EmilianoCarrillo/Connect4_Canvas)
-[さわれる いのちの輝きくん](https://www.shapoco.net/inochi/)
+- [EmilianoCarrillo/Connect4_Canvas](https://github.com/EmilianoCarrillo/Connect4_Canvas)
+- [さわれる いのちの輝きくん](https://www.shapoco.net/inochi/)
