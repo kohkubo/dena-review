@@ -27,3 +27,8 @@ demo: https://connect4-48dff.web.app/
 
 - Unit tests
 - Integration tests
+
+## Reference sites
+
+[EmilianoCarrillo/Connect4_Canvas](https://github.com/EmilianoCarrillo/Connect4_Canvas)
+[さわれる いのちの輝きくん](https://www.shapoco.net/inochi/)
